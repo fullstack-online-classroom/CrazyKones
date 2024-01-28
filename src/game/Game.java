@@ -1,5 +1,7 @@
 package game;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 import java.util.*;
 public class Game {
 
@@ -7,6 +9,8 @@ public class Game {
     public static final String RESOURCES_PREFIX = "resources/";
 
     public boolean gameStarted = true;
+
+    private Car car;
 
     public List<Kone> Kones = new ArrayList<>();
 
@@ -18,7 +22,6 @@ public class Game {
             if(counter >= 3) {
                 createKone();
                 counter = 0;
-                System.out.println("started");
             }
             Thread.sleep(1000);
         }
@@ -27,12 +30,30 @@ public class Game {
     public void createKone(){
         Kone kone = new Kone(new Position());
         Kones.add(kone);
-        return;
     }
 
     public void moveKones(){
         for(Kone kone: Kones){
+            if (!gameStarted) {
+                return;
+            }
             kone.moveKone();
+            colissionDetector(kone);
         }
+    }
+
+    public void colissionDetector(Kone kone){
+        Picture konePic = kone.getKonePic();
+        Picture carPic = car.getCarPic();
+        if (konePic.getX() < carPic.getMaxX()) {
+            if (konePic.getY() <= carPic.getMaxY() || konePic.getMaxY() >= carPic.getY()) {
+                gameStarted = false;
+                System.out.println("game over");
+            }
+        }
+    }
+
+    public void setCar(Car car){
+        this.car = car;
     }
 }

@@ -6,7 +6,10 @@ public class Car {
 
     private Background background;
 
-    private Picture car;
+    private Picture carPic;
+
+    private int posX = 0;
+    private int posY = 400;
 
     private String carRight;
     private String carLeft;
@@ -18,8 +21,8 @@ public class Car {
         carLeft = Game.RESOURCES_PREFIX + "carLeft.png";
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
-        car = new Picture(0, 400, carRight);
-        car.draw();
+        carPic = new Picture(posX, posY, carRight);
+        carPic.draw();
     }
     //picture = new Picture(STARTING_X, STARTING_Y, "Resources/catiaStreetStore.PNG"); //Create Character model on the screen
 
@@ -27,34 +30,39 @@ public class Car {
         this.background = background;
     }
 
+    public Picture getCarPic(){
+        return carPic;
+    }
+    public void moveUp() {
+
+        if (carPic.getY() - Game.SPEED >= 0) {
+            carPic.load(carRight);
+            carPic.translate(posX, -Game.SPEED);
+            posY-=Game.SPEED;
+        }
+    }
+
+    public void moveDown(){
+        if (carPic.getY() + carPic.getHeight() + Game.SPEED <= background.getHeight()) {
+            carPic.load(carRight);
+            carPic.translate(posX, Game.SPEED);
+            posY+=Game.SPEED;
+        }
+    }
+
     public void moveLeft(){
 
-        if (car.getX() - Game.SPEED >= 0) {
-            car.load(carLeft);
-            car.translate(-Game.SPEED, 0);
+        if (carPic.getX() - Game.SPEED >= 0) {
+            carPic.load(carLeft);
+            carPic.translate(-Game.SPEED, 0);
         }
     }
 
     public void moveRight(){
 
-        if(car.getX() + car.getWidth() + Game.SPEED <= background.getWidth()){
-            car.load(carRight);
-            car.translate(Game.SPEED, 0);}
-    }
-
-    public void moveUp() {
-
-        if (car.getY() - Game.SPEED >= 0) {
-            car.load(carRight);
-            car.translate(0, -Game.SPEED);
-        }
-    }
-
-    public void moveDown(){
-        if (car.getY() + car.getHeight() + Game.SPEED <= background.getHeight()) {
-            car.load(carRight);
-            car.translate(0, Game.SPEED);
-        }
+        if(carPic.getX() + carPic.getWidth() + Game.SPEED <= background.getWidth()){
+            carPic.load(carRight);
+            carPic.translate(Game.SPEED, 0);}
     }
 }
 

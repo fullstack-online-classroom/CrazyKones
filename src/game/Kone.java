@@ -6,7 +6,6 @@ public class Kone {
     private Picture konePic;
 
     private int posX;
-
     private int posY;
 
     public Kone(Position position) {
@@ -21,10 +20,13 @@ public class Kone {
     public void moveKone(){
         if(posX > 0){
             posX-=100;
-            System.out.println("moved" + posX);
             konePic.translate(-100, 0);
         }
         else
             konePic.delete();
+    }
+
+    public Picture getKonePic(){
+        return konePic;
     }
 }
