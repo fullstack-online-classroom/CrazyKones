@@ -12,7 +12,14 @@ public class Game {
 
     private Car car;
 
+    private Picture gameOverPic;
+
     public List<Kone> Kones = new ArrayList<>();
+
+    public Game() {
+        Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
+        this.gameOverPic = gameOverPic;
+    }
 
     public void start() throws InterruptedException {
         int counter = 0;
@@ -53,9 +60,22 @@ public class Game {
         if (carPic.getX() + carPic.getWidth() >= konePic.getX() && carPic.getY() + carPic.getHeight() >= konePic.getY() &&
                 carPic.getY() <= konePic.getY() + konePic.getHeight() && carPic.getX() <= konePic.getX() + konePic.getWidth())
         {
-                gameStarted = false;
-                Picture GameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
-                GameOverPic.draw();
+                gameOver();
+        }
+    }
+
+    public void gameOver(){
+        if (gameStarted) {
+            gameStarted = false;
+            gameOverPic.draw();
+        }
+    }
+
+    public void gameRestart(){
+        if (!gameStarted) {
+            gameStarted = true;
+            gameOverPic.delete();
+            moveKones(); //it only works once after dying idk why
         }
     }
 

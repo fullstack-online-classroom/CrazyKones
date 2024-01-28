@@ -30,5 +30,4 @@ public class Kone {
     public Picture getKonePic(){
         return konePic;
     }
-
 }

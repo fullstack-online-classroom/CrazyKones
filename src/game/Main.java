@@ -23,6 +23,7 @@ public class Main {
 
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);
+        keyboardLogic.setGame(game);
         game.setCar(car);
 
         game.start();

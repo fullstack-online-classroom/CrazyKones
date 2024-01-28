@@ -10,6 +10,8 @@ public class KeyboardLogic implements KeyboardHandler {
     private Keyboard keyboard;
     private Car car;
 
+    private Game game;
+
     public KeyboardLogic() {
         keyboard = new Keyboard(this);
 
@@ -32,11 +34,18 @@ public class KeyboardLogic implements KeyboardHandler {
         down.setKey(KeyboardEvent.KEY_DOWN);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(down);
+
+        KeyboardEvent space = new KeyboardEvent();
+        space.setKey(KeyboardEvent.KEY_SPACE);
+        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(space);
     }
 
     public void setCar(Car car) {
         this.car = car;
     }
+
+    public void setGame(Game game) { this.game = game; }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
@@ -56,6 +65,10 @@ public class KeyboardLogic implements KeyboardHandler {
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN){
             car.moveDown();
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
+            game.gameRestart();
         }
     }
 
