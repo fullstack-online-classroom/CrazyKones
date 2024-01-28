@@ -19,6 +19,9 @@ public class Game {
         while (gameStarted) {
             counter++;
             moveKones();
+            if (Kones.size() == 8) {
+                Kones.remove(0);
+            }
             System.out.println(Kones);
             if(counter >= 3) {
                 createKone();
@@ -47,11 +50,12 @@ public class Game {
         Picture konePic = kone.getKonePic();
         Picture carPic = car.getCarPic();
 
-        if (carPic.getX() + carPic.getWidth() >= konePic.getX() && carPic.getY() + carPic.getWidth() >= konePic.getY() &&
+        if (carPic.getX() + carPic.getWidth() >= konePic.getX() - 50 && carPic.getY() + carPic.getHeight() >= konePic.getY() &&
                 carPic.getY() <= konePic.getY() + konePic.getHeight() && carPic.getX() <= konePic.getX() + konePic.getWidth())
         {
                 gameStarted = false;
-                System.out.println("game over");
+                Picture GameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
+                GameOverPic.draw();
         }
     }
 
