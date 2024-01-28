@@ -50,7 +50,7 @@ public class Game {
         Picture konePic = kone.getKonePic();
         Picture carPic = car.getCarPic();
 
-        if (carPic.getX() + carPic.getWidth() >= konePic.getX() - 50 && carPic.getY() + carPic.getHeight() >= konePic.getY() &&
+        if (carPic.getX() + carPic.getWidth() >= konePic.getX() && carPic.getY() + carPic.getHeight() >= konePic.getY() &&
                 carPic.getY() <= konePic.getY() + konePic.getHeight() && carPic.getX() <= konePic.getX() + konePic.getWidth())
         {
                 gameStarted = false;

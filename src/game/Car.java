@@ -17,7 +17,7 @@ public class Car {
     private String carDown;
 
     public Car(){
-        carRight = Game.RESOURCES_PREFIX + "carRight.png";
+        carRight = Game.RESOURCES_PREFIX + "carcar.png";
         carLeft = Game.RESOURCES_PREFIX + "carLeft.png";
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
