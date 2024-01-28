@@ -22,6 +22,7 @@ public class Car {
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
         carPic = new Picture(posX, posY, carRight);
+        carPic.load(carRight);
         carPic.draw();
     }
     //picture = new Picture(STARTING_X, STARTING_Y, "Resources/catiaStreetStore.PNG"); //Create Character model on the screen
@@ -36,7 +37,6 @@ public class Car {
     public void moveUp() {
 
         if (carPic.getY() - Game.SPEED >= 0) {
-            carPic.load(carRight);
             carPic.translate(posX, -Game.SPEED);
             posY-=Game.SPEED;
         }
@@ -44,7 +44,6 @@ public class Car {
 
     public void moveDown(){
         if (carPic.getY() + carPic.getHeight() + Game.SPEED <= background.getHeight()) {
-            carPic.load(carRight);
             carPic.translate(posX, Game.SPEED);
             posY+=Game.SPEED;
         }

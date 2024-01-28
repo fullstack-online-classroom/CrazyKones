@@ -20,13 +20,15 @@ public class Kone {
     public void moveKone(){
         if(posX > 0){
             posX-=100;
-            konePic.translate(-100, 0);
+            konePic.translate(-200, 0);
         }
-        else
+        else {
             konePic.delete();
+        }
     }
 
     public Picture getKonePic(){
         return konePic;
     }
+
 }

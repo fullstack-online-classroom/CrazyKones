@@ -19,6 +19,7 @@ public class Game {
         while (gameStarted) {
             counter++;
             moveKones();
+            System.out.println(Kones);
             if(counter >= 3) {
                 createKone();
                 counter = 0;
@@ -45,11 +46,12 @@ public class Game {
     public void colissionDetector(Kone kone){
         Picture konePic = kone.getKonePic();
         Picture carPic = car.getCarPic();
-        if (konePic.getX() < carPic.getMaxX()) {
-            if (konePic.getY() <= carPic.getMaxY() || konePic.getMaxY() >= carPic.getY()) {
+
+        if (carPic.getX() + carPic.getWidth() >= konePic.getX() && carPic.getY() + carPic.getWidth() >= konePic.getY() &&
+                carPic.getY() <= konePic.getY() + konePic.getHeight() && carPic.getX() <= konePic.getX() + konePic.getWidth())
+        {
                 gameStarted = false;
                 System.out.println("game over");
-            }
         }
     }
 
