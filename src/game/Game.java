@@ -12,9 +12,11 @@ public class Game {
 
     private Car car;
 
+    private Kone kone;
+
     private Picture gameOverPic;
 
-    public List<Kone> Kones = new ArrayList<>();
+    public List<Kone> kones = new ArrayList<>();;
 
     public Game() {
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
@@ -23,13 +25,13 @@ public class Game {
 
     public void start() throws InterruptedException {
         int counter = 0;
+        //kones = new ArrayList<>();
         while (gameStarted) {
             counter++;
             moveKones();
-            if (Kones.size() == 8) {
-                Kones.remove(0);
+            if (kones.size() == 8) {
+                kones.remove(0);
             }
-            System.out.println(Kones);
             if(counter >= 3) {
                 createKone();
                 counter = 0;
@@ -40,11 +42,11 @@ public class Game {
 
     public void createKone(){
         Kone kone = new Kone(new Position());
-        Kones.add(kone);
+        kones.add(kone);
     }
 
     public void moveKones(){
-        for(Kone kone: Kones){
+        for(Kone kone: kones){
             if (!gameStarted) {
                 return;
             }
@@ -73,9 +75,17 @@ public class Game {
 
     public void gameRestart(){
         if (!gameStarted) {
-            gameStarted = true;
             gameOverPic.delete();
-            moveKones(); //it only works once after dying idk why
+            removeKone();
+            kones = new ArrayList<>();
+            gameStarted = true;
+        }
+    }
+
+    public void removeKone(){
+        for(int i = (kones.size() - 1) ; i >= 0 ; i--) {
+            kones.get(i).getKonePic().delete();
+            kones.remove(i);
         }
     }
 

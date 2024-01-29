@@ -68,7 +68,7 @@ public class KeyboardLogic implements KeyboardHandler {
         }
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
-            game.gameRestart();
+                game.gameRestart();
         }
     }
 
