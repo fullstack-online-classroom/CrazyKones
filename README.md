@@ -1,1 +1,1 @@
-![CrasyKones](https://miro.medium.com/v2/resize:fit:750/format:webp/1*y_b9jPVIEkeiM5W2AWXmxg.jpeg)
+![CrasyKones]([https://miro.medium.com/v2/resize:fit:750/format:webp/1*y_b9jPVIEkeiM5W2AWXmxg.jpeg](https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg)https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg)
