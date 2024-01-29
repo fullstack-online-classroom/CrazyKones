@@ -3,8 +3,8 @@
 # Crasy Kones
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from CodeforAll_ Coding Bootcamp.
 
-* Manuel Afonso
 * Soraia Viegas
+* Manuel Afonso
 * Wajdi Jerbi
 * Pedro Nunes
 * Ricardo Castro
