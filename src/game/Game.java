@@ -16,7 +16,7 @@ public class Game {
 
     private Picture gameOverPic;
 
-    public List<Kone> kones = new ArrayList<>();;
+    public List<Kone> kones;
 
     public Game() {
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
@@ -25,7 +25,8 @@ public class Game {
 
     public void start() throws InterruptedException {
         int counter = 0;
-        //kones = new ArrayList<>();
+        int dificulty = 1000;
+        kones = new ArrayList<>();
         while (gameStarted) {
             counter++;
             moveKones();
@@ -36,7 +37,7 @@ public class Game {
                 createKone();
                 counter = 0;
             }
-            Thread.sleep(1000);
+            Thread.sleep(dificulty--);
         }
     }
 
@@ -83,7 +84,7 @@ public class Game {
     }
 
     public void removeKone(){
-        for(int i = (kones.size() - 1) ; i >= 0 ; i--) {
+        for(int i = (kones.size() - 1); i >= 0 ; i--) {
             kones.get(i).getKonePic().delete();
             kones.remove(i);
         }
