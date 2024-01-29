@@ -7,7 +7,7 @@ Crasy Kones is an arcade game made by a passionate team of Code Cadets from Code
 * Soraia Viegas
 * Wajdi Jerbi
 * Pedro Nunes
-*Ricardo Castro
+* Ricardo Castro
 
 # How does it work
 Simply move your Taxi around with the arrow keys
