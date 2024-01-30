@@ -3,11 +3,11 @@
 # Crasy Kones
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from CodeforAll_ Coding Bootcamp.
 
-* Soraia Viegas
-* Manuel Afonso
+* [Soraia Viegas](https://github.com/soraiathegirleffect)
+* [Manuel Afonso](https://github.com/Manuel-Af)
 * [Wajdi Jerbi](https://github.com/WajdiRaydaLuna)
-* Pedro Nunes
-* Ricardo Castro
+* [Pedro Miguel Nunes](https://github.com/Tariknunes14)
+* [Ricardo Castro](https://github.com/Castrocx)
 
 # How does it work
 * Simply move your Taxi around with the arrow keys
