@@ -19,5 +19,5 @@ Crasy Kones is an arcade game made by a passionate team of Code Cadets from Code
 Clone the repository to your machine
 Inside the directory, execute jar file:
 
-    $java -jar CrazyKones.jar
+    $ java -jar CrazyKones.jar
 
