@@ -1,4 +1,9 @@
-![Hello](https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif)
+<p align="center" width="100%">
+  <img width="33%" src="https://media.baamboozle.com/uploads/images/1338290/95a3cda3-aa6b-433c-9d17-90aa27c1306e.gif">     
+  <img width="33%" src="https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif">
+  <img width="33%" src="https://media.baamboozle.com/uploads/images/432239/1630304364_79255_gif-url.gif">
+ </p>
+
 
 # $\mathbb{\color{orange}{Crazy \ Kones}}$
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from [![CodeforAll_](https://codeforall.com/hs-fs/hubfs/Antigo-vs-novo_preto_500x90.gif?width=180&name=Antigo-vs-novo_preto_500x90.gif)](https://codeforall.com/) Coding Bootcamp.
@@ -17,8 +22,9 @@ Crasy Kones is an arcade game made by a passionate team of Code Cadets from [![C
 
 * Simply move your Taxi around with the arrow keys
 * Crash into an Kone and you loose
-
-![CrasyKones](https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg)
+* <p align="center" width="100%">
+  <img width="70%" src="https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg">     
+ </p>
 
 # $\mathbb{\color{red}{How \ can \ you \ play \ it \ ?}}$
 * Clone the repository to your machine
