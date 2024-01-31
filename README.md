@@ -1,6 +1,6 @@
 ![Hello](https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif)
 
-# Crasy Kones
+# Crazy Kones
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from CodeforAll_ Coding Bootcamp.
 
 * [Soraia Viegas](https://github.com/soraiathegirleffect)
