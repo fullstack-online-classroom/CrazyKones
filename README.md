@@ -1,7 +1,5 @@
 <p align="center" width="100%">
-  <img width="33%" src="https://media.baamboozle.com/uploads/images/1338290/95a3cda3-aa6b-433c-9d17-90aa27c1306e.gif">     
-  <img width="33%" src="https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif">
-  <img width="33%" src="https://media.baamboozle.com/uploads/images/432239/1630304364_79255_gif-url.gif">
+  <img width="40%" src="https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif">
  </p>
 
 
@@ -22,8 +20,9 @@ Crasy Kones is an arcade game made by a passionate team of Code Cadets from [![C
 
 * Simply move your Taxi around with the arrow keys
 * Crash into a Kone and you loose
-* <p align="center" width="100%">
-  <img width="70%" src="https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg">     
+  <p align="center" width="100%">
+  <img width="50%" src="https://media.baamboozle.com/uploads/images/1338290/95a3cda3-aa6b-433c-9d17-90aa27c1306e.gif">     
+  <img width="40%" src="https://media.baamboozle.com/uploads/images/432239/1630304364_79255_gif-url.gif">
  </p>
 
 # $\mathbb{\color{red}{How \ can \ you \ play \ it \ ?}}$
