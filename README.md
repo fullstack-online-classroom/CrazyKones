@@ -1,6 +1,6 @@
 ![Hello](https://media1.tenor.com/m/6us3et_6HDoAAAAC/hello-there-hi-there.gif)
 
-# $\mathbb{\color{yellow}{Crazy \ Kones}}$
+# $\mathbb{\color{orange}{Crazy \ Kones}}$
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from [![CodeforAll_](https://codeforall.com/hs-fs/hubfs/Antigo-vs-novo_preto_500x90.gif?width=180&name=Antigo-vs-novo_preto_500x90.gif)](https://codeforall.com/) Coding Bootcamp.
 
   <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Soraia Viegas](https://github.com/soraiathegirleffect)
