@@ -21,7 +21,7 @@ Crasy Kones is an arcade game made by a passionate team of Code Cadets from [![C
  # $\mathbb{\color{lime}{How \ does \ it \ work \ ?}}$
 
 * Simply move your Taxi around with the arrow keys
-* Crash into an Kone and you loose
+* Crash into a Kone and you loose
 * <p align="center" width="100%">
   <img width="70%" src="https://sm.ign.com/t/ign_in/articlepage/w/what-would-bring-crazy-taxi-to-ps4-and-xbox-one/what-would-bring-crazy-taxi-to-ps4-and-xbox-one_j9hv.1280.jpg">     
  </p>
