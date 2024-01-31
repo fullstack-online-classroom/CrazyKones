@@ -3,7 +3,7 @@
 # Crazy Kones
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from CodeforAll_ Coding Bootcamp.
 
-* [Soraia Viegas](https://github.com/soraiathegirleffect)
+<img width="24" height="24" src="https://img.icons8.com/material-outlined/24/github.png" alt="github"/> [Soraia Viegas](https://github.com/soraiathegirleffect)
 * [Manuel Afonso](https://github.com/Manuel-Af)
 * [Wajdi Jerbi](https://github.com/WajdiRaydaLuna)
 * [Pedro Miguel Nunes](https://github.com/Tariknunes14)
