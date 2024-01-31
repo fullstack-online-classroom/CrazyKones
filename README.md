@@ -3,11 +3,15 @@
 # Crazy Kones
 Crasy Kones is an arcade game made by a passionate team of Code Cadets from CodeforAll_ Coding Bootcamp.
 
-<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"> [Soraia Viegas](https://github.com/soraiathegirleffect)
-* [Manuel Afonso](https://github.com/Manuel-Af)
-* [Wajdi Jerbi](https://github.com/WajdiRaydaLuna)
-* [Pedro Miguel Nunes](https://github.com/Tariknunes14)
-* [Ricardo Castro](https://github.com/Castrocx)
+  <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Soraia Viegas](https://github.com/soraiathegirleffect)
+  
+  <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Manuel Afonso](https://github.com/Manuel-Af)
+  
+  <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Wajdi Jerbi](https://github.com/WajdiRaydaLuna)
+  
+  <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Pedro Miguel Nunes](https://github.com/Tariknunes14)
+  
+  <img width="16" height="16" src="https://img.icons8.com/tiny-color/16/github.png" alt="github"/>[Ricardo Castro](https://github.com/Castrocx)
 
 # How does it work
 * Simply move your Taxi around with the arrow keys
