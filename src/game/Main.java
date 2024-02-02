@@ -7,6 +7,8 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
+
+
         //Canvas.setMaxX(1200);
         //Canvas.setMaxY(700);
         // x, y, width, height
@@ -20,6 +22,10 @@ public class Main {
         Car car = new Car();
         //Client client = new Client();
         car.setBackground(background);
+
+        Score score = new Score();
+        score.startTimer();
+        game.setScore(score); // set the score in the game
 
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);

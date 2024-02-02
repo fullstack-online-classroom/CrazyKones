@@ -1,5 +1,7 @@
 package game;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.*;
@@ -17,6 +19,11 @@ public class Game {
     private Picture gameOverPic;
 
     public List<Kone> kones;
+    private Score score;
+    private ScoreManager scoreManager = new ScoreManager();
+    private Text finalScoreText; // Add this field to keep track of the final score text
+
+
 
     public Game() {
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
@@ -71,6 +78,31 @@ public class Game {
         if (gameStarted) {
             gameStarted = false;
             gameOverPic.draw();
+
+            int finalScore = score.getScore();
+            int highScore = scoreManager.readHighScore();
+
+            // Only update the high score and draw the score if the final score is greater
+            if (finalScore > highScore) {
+                scoreManager.writeHighScore(finalScore);
+                if (finalScoreText != null) {
+                    finalScoreText.delete();
+                }
+                finalScoreText = new Text(893, 50, "High Score: " + finalScore);
+                finalScoreText.setColor(Color.RED);
+                finalScoreText.grow(100, 40);
+                finalScoreText.draw();
+            } else {
+                // If the final score is not greater, draw the high score
+                if (finalScoreText != null) {
+                    finalScoreText.delete();
+                }
+                finalScoreText = new Text(893, 50, "High Score: " + highScore);
+                finalScoreText.setColor(Color.RED);
+                finalScoreText.grow(100, 40);
+                finalScoreText.draw();
+            }
+
         }
     }
 
@@ -79,6 +111,7 @@ public class Game {
             gameOverPic.delete();
             removeKone();
             kones = new ArrayList<>();
+            score.resetScore(); // reset the score
             gameStarted = true;
         }
     }
@@ -92,5 +125,8 @@ public class Game {
 
     public void setCar(Car car){
         this.car = car;
+    }
+    public void setScore(Score score) {
+        this.score = score;
     }
 }
