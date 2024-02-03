@@ -23,16 +23,13 @@ public class Main {
         //Client client = new Client();
         car.setBackground(background);
 
-        Score score = new Score();
-        score.startTimer();
-        game.setScore(score); // set the score in the game
-
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);
         keyboardLogic.setGame(game);
         game.setCar(car);
 
-        game.start();
+        game.DrawControls(background);
+        //game.start();
 
     }
 }

@@ -10,13 +10,14 @@ public class Game {
     public static final int SPEED = 10;
     public static final String RESOURCES_PREFIX = "resources/";
 
-    public boolean gameStarted = true;
+    public boolean gameStarted = false;
 
     private Car car;
 
     private Kone kone;
 
     private Picture gameOverPic;
+    private Picture controlsPic;
 
     public List<Kone> kones;
     private Score score;
@@ -31,6 +32,12 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+        gameStarted = true;
+
+        Score score = new Score();
+        score.startTimer();
+        setScore(score); // set the score in the game
+
         int counter = 0;
         int dificulty = 1000;
         kones = new ArrayList<>();
@@ -45,6 +52,29 @@ public class Game {
                 counter = 0;
             }
             Thread.sleep(dificulty--);
+        }
+    }
+
+    public void DrawControls(Background background){
+        float centerPosX = background.getBackground().getWidth() /5;
+        float centerPosY = background.getBackground().getHeight()/5;
+        controlsPic = new Picture(centerPosX,centerPosY,Game.RESOURCES_PREFIX + "controls.png");
+        controlsPic.draw();
+    }
+
+    public boolean CheckIfControlsAreOpen(){
+        return (controlsPic!= null);}
+
+    public void RemoveControls(){
+        controlsPic.delete();
+        System.out.println("AAAAAAAA");
+
+
+
+        try{
+            start();
+        }catch (Exception e){
+            gameRestart();
         }
     }
 

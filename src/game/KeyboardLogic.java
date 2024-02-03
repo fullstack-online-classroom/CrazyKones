@@ -44,6 +44,11 @@ public class KeyboardLogic implements KeyboardHandler {
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(space);
+
+        KeyboardEvent enter = new KeyboardEvent();
+        enter.setKey(KeyboardEvent.KEY_ENTER);
+        enter.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(enter);
     }
 
     public void setCar(Car car) {
@@ -80,6 +85,12 @@ public class KeyboardLogic implements KeyboardHandler {
                 game.gameRestart();
         }
 
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER){
+            if(game.CheckIfControlsAreOpen())
+            {
+                game.RemoveControls();
+            }
+        }
     }
 
     @Override
