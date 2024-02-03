@@ -13,14 +13,20 @@ public class Car {
 
     private String carRight;
     private String carLeft;
+
+    private String carEasy;
     private String carUp;
     private String carDown;
 
+    private boolean tiny;
+
+
     public Car(){
-        carRight = Game.RESOURCES_PREFIX + "carcar.png";
+        carRight = Game.RESOURCES_PREFIX + "carStandard.png";
         carLeft = Game.RESOURCES_PREFIX + "carLeft.png";
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
+        carEasy = Game.RESOURCES_PREFIX + "carEasy.png";
         carPic = new Picture(posX, posY, carRight);
         carPic.load(carRight);
         carPic.draw();
@@ -46,6 +52,23 @@ public class Car {
         if (carPic.getY() + carPic.getHeight() + Game.SPEED <= background.getHeight()) {
             carPic.translate(posX, Game.SPEED);
             posY+=Game.SPEED;
+        }
+    }
+
+    public void easyMode() {
+        if (!tiny) {
+            carPic.delete();
+            carPic = new Picture(posX, posY, carEasy);
+            carPic.load(carEasy);
+            carPic.draw();
+            tiny = true;
+        }
+        else if (tiny) {
+            carPic.delete();
+            carPic = new Picture(posX, posY, carRight);
+            carPic.load(carRight);
+            carPic.draw();
+            tiny = false;
         }
     }
 

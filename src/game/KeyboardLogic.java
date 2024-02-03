@@ -35,6 +35,11 @@ public class KeyboardLogic implements KeyboardHandler {
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(down);
 
+        KeyboardEvent five = new KeyboardEvent();
+        five.setKey(KeyboardEvent.KEY_5);
+        five.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(five);
+
         KeyboardEvent space = new KeyboardEvent();
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -67,9 +72,14 @@ public class KeyboardLogic implements KeyboardHandler {
             car.moveDown();
         }
 
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_5){
+            car.easyMode();
+        }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
                 game.gameRestart();
         }
+
     }
 
     @Override
