@@ -14,7 +14,7 @@ public class Game {
 
     private Car car;
 
-    private Kone kone;
+    private ObstacleFactory obstacleFactory;
 
     private Picture gameOverPic;
 
@@ -23,52 +23,53 @@ public class Game {
     private ScoreManager scoreManager = new ScoreManager();
     private Text finalScoreText; // Add this field to keep track of the final score text
 
-
-
     public Game() {
+        obstacleFactory = new ObstacleFactory();
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
         this.gameOverPic = gameOverPic;
     }
 
     public void start() throws InterruptedException {
-        int counter = 0;
-        int dificulty = 1000;
-        kones = new ArrayList<>();
+        //List<Obstacle> obstacleArray = obstacleFactory.getObstacles();
+        int randomizer = 0; //1 to 5
+        //kones = new ArrayList<>();
         while (gameStarted) {
-            counter++;
-            moveKones();
-            if (kones.size() == 8) {
-                kones.remove(0);
+            moveObstacles();
+            randomizer = (int) (Math.random() * 5) + 1;
+            //change to when it hits the border of background
+            if (obstacleFactory.getObstacles().size() == 8) {
+                obstacleFactory.getObstacles().remove(0);
             }
-            if(counter >= 3) {
-                createKone();
-                counter = 0;
+            if(randomizer >= 3) {
+                obstacleFactory.addKone();
+                ;
             }
-            Thread.sleep(dificulty--);
+            if(randomizer < 3) {
+                obstacleFactory.addClient();
+            }
+            Thread.sleep(1000);
         }
     }
 
-    public void createKone(){
-        Kone kone = new Kone(new Position());
-        kones.add(kone);
-    }
-
-    public void moveKones(){
-        for(Kone kone: kones){
+    public void moveObstacles(){
+        //List<Obstacle> obstacleArray = obstacleFactory.getObstacles();
+        for(Obstacle obstacle: obstacleFactory.getObstacles()){
             if (!gameStarted) {
                 return;
             }
-            kone.moveKone();
-            colissionDetector(kone);
+            obstacle.move();
+            colissionDetector(obstacle);
         }
     }
 
-    public void colissionDetector(Kone kone){
-        Picture konePic = kone.getKonePic();
+
+    public void colissionDetector(Obstacle obstacle) {
+
+        Picture obstaclePic = obstacle.getPic();
         Picture carPic = car.getCarPic();
 
-        if (carPic.getX() + carPic.getWidth() >= konePic.getX() && carPic.getY() + carPic.getHeight() >= konePic.getY() &&
-                carPic.getY() <= konePic.getY() + konePic.getHeight() && carPic.getX() <= konePic.getX() + konePic.getWidth())
+        if (carPic.getX() + carPic.getWidth() >= obstaclePic.getX() && carPic.getY() + carPic.getHeight() >= obstaclePic.getY() &&
+                carPic.getY() <= obstaclePic.getY() + obstaclePic.getHeight() && carPic.getX() <= obstaclePic.getX() + obstaclePic.getWidth())
         {
                 gameOver();
         }
@@ -102,27 +103,20 @@ public class Game {
                 finalScoreText.grow(100, 40);
                 finalScoreText.draw();
             }
-
         }
     }
 
     public void gameRestart(){
         if (!gameStarted) {
             gameOverPic.delete();
-            removeKone();
-            kones = new ArrayList<>();
+            obstacleFactory.removeObstacles();
+            kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             score.resetScore(); // reset the score
             gameStarted = true;
         }
     }
 
-    public void removeKone(){
-        for(int i = (kones.size() - 1); i >= 0 ; i--) {
-            kones.get(i).getKonePic().delete();
-            kones.remove(i);
-        }
-    }
-
+    //we could also have created a setObstacleFactory
     public void setCar(Car car){
         this.car = car;
     }
