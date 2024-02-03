@@ -112,7 +112,9 @@ public class Game {
             obstacleFactory.removeObstacles();
             kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             score.resetScore(); // reset the score
+            car.changeToOriginalImage();
             gameStarted = true;
+            // change the car image back to the original one
         }
     }
 

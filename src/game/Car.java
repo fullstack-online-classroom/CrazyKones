@@ -20,6 +20,9 @@ public class Car {
 
     private boolean tiny;
 
+    private String cheatCar;
+    private String snail;
+
 
     public Car(){
         carRight = Game.RESOURCES_PREFIX + "carStandard.png";
@@ -27,6 +30,8 @@ public class Car {
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
         carEasy = Game.RESOURCES_PREFIX + "carEasy.png";
+        cheatCar= Game.RESOURCES_PREFIX + "cheatcar.png";
+        snail = Game.RESOURCES_PREFIX + "Snail.png";
         carPic = new Picture(posX, posY, carRight);
         carPic.load(carRight);
         carPic.draw();
@@ -86,5 +91,18 @@ public class Car {
             carPic.load(carRight);
             carPic.translate(Game.SPEED, 0);}
     }
+
+
+    public void changeToCheatImage() {
+        carPic.load(cheatCar);
+    }
+    public void changeToSnailImage() {
+        carPic.load(snail);
+    }
+    public void changeToOriginalImage() {
+        carPic.load(carRight);
+    }
+
+
 }
 

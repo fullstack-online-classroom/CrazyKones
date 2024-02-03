@@ -12,6 +12,13 @@ public class KeyboardLogic implements KeyboardHandler {
 
     private Game game;
 
+    private boolean sKeyPressed = false;
+    private boolean rightArrowKeyPressed = false;
+
+    private boolean fKeyPressed = false;
+
+
+
     public KeyboardLogic() {
         keyboard = new Keyboard(this);
 
@@ -44,6 +51,16 @@ public class KeyboardLogic implements KeyboardHandler {
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(space);
+
+        KeyboardEvent fKey = new KeyboardEvent();
+        fKey.setKey(KeyboardEvent.KEY_F);
+        fKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(fKey);
+
+        KeyboardEvent sKey = new KeyboardEvent();
+        sKey.setKey(KeyboardEvent.KEY_S);
+        sKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(sKey);
     }
 
     public void setCar(Car car) {
@@ -78,8 +95,28 @@ public class KeyboardLogic implements KeyboardHandler {
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
                 game.gameRestart();
+
+
         }
 
+        // cheating code to change the car image
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_F){
+            fKeyPressed = true;
+        }
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            sKeyPressed = true;
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
+            rightArrowKeyPressed = true;
+        }
+
+        if(fKeyPressed && rightArrowKeyPressed){
+            car.changeToCheatImage();
+        }
+        if(sKeyPressed && rightArrowKeyPressed){
+            car.changeToSnailImage();
+        }
     }
 
     @Override
