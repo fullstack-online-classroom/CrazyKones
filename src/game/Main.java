@@ -25,7 +25,7 @@ public class Main {
 
         Score score = new Score();
         score.startTimer();
-        game.setScore(score); // set the score in the game
+        game.setScore(score); // set the score in the gameee
 
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);
@@ -33,6 +33,5 @@ public class Main {
         game.setCar(car);
 
         game.start();
-
     }
 }
