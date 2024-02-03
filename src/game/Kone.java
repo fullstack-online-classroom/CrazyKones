@@ -1,14 +1,15 @@
 package game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-public class Kone {
+public class Kone extends Obstacle implements Bad {
 
     private Picture konePic;
 
     private int posX;
     private int posY;
 
-    public Kone(Position position) {
+    public Kone() {
+        super();
         posX = Background.getWidth()-120;
         posY = (int) Math.round(Math.random() * (Background.getHeight()-120));
         //posY = Background.getHeight();

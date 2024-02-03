@@ -2,7 +2,7 @@ package game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Client {
+public class Client extends Obstacle implements Good{
 
     private Picture picture;
 

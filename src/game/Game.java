@@ -32,7 +32,6 @@ public class Game {
 
     public void start() throws InterruptedException {
         int counter = 0;
-        int dificulty = 1000;
         kones = new ArrayList<>();
         while (gameStarted) {
             counter++;
@@ -44,12 +43,13 @@ public class Game {
                 createKone();
                 counter = 0;
             }
-            Thread.sleep(dificulty--);
+            Thread.sleep(1000);
         }
     }
 
+    //ADDED TO OBSTACLEFACTORY
     public void createKone(){
-        Kone kone = new Kone(new Position());
+        Kone kone = new Kone();
         kones.add(kone);
     }
 
@@ -110,7 +110,7 @@ public class Game {
         if (!gameStarted) {
             gameOverPic.delete();
             removeKone();
-            kones = new ArrayList<>();
+            kones = new ArrayList<>(); //call obstacleFactory????????
             score.resetScore(); // reset the score
             gameStarted = true;
         }
