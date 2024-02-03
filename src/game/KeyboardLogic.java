@@ -12,10 +12,9 @@ public class KeyboardLogic implements KeyboardHandler {
 
     private Game game;
 
-    private boolean sKeyPressed = false;
-    private boolean rightArrowKeyPressed = false;
-
-    private boolean fKeyPressed = false;
+    private boolean sKeyPressed;
+    private boolean rightArrowKeyPressed;
+    private boolean fKeyPressed;
 
 
 
@@ -56,11 +55,22 @@ public class KeyboardLogic implements KeyboardHandler {
         fKey.setKey(KeyboardEvent.KEY_F);
         fKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(fKey);
+        //testing
+        KeyboardEvent releaseFKey = new KeyboardEvent();
+        releaseFKey.setKey(KeyboardEvent.KEY_F);
+        releaseFKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseFKey);
 
         KeyboardEvent sKey = new KeyboardEvent();
         sKey.setKey(KeyboardEvent.KEY_S);
         sKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(sKey);
+        //testing
+        KeyboardEvent releaseSKey = new KeyboardEvent();
+        releaseSKey.setKey(KeyboardEvent.KEY_S);
+        releaseSKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseSKey);
+
     }
 
     public void setCar(Car car) {
@@ -103,6 +113,7 @@ public class KeyboardLogic implements KeyboardHandler {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_F){
             fKeyPressed = true;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
             sKeyPressed = true;
         }
@@ -112,15 +123,29 @@ public class KeyboardLogic implements KeyboardHandler {
         }
 
         if(fKeyPressed && rightArrowKeyPressed){
-            car.changeToCheatImage();
+            car.changeToFerrari();
         }
+
         if(sKeyPressed && rightArrowKeyPressed){
-            car.changeToSnailImage();
+            car.changeToSnail();
         }
+
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
+            rightArrowKeyPressed = false;
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_F){
+            fKeyPressed = false;
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            sKeyPressed = false;
+        }
 
     }
 }

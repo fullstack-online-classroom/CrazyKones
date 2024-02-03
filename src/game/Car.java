@@ -2,6 +2,8 @@ package game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.swing.*;
+
 public class Car {
 
     private Background background;
@@ -18,9 +20,10 @@ public class Car {
     private String carUp;
     private String carDown;
 
+    private boolean taxi;
     private boolean tiny;
 
-    private String cheatCar;
+    private String ferrari;
     private String snail;
 
 
@@ -30,8 +33,9 @@ public class Car {
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
         carEasy = Game.RESOURCES_PREFIX + "carEasy.png";
-        cheatCar= Game.RESOURCES_PREFIX + "cheatcar.png";
+        ferrari = Game.RESOURCES_PREFIX + "cheatcar.png";
         snail = Game.RESOURCES_PREFIX + "Snail.png";
+
         carPic = new Picture(posX, posY, carRight);
         carPic.load(carRight);
         carPic.draw();
@@ -62,17 +66,14 @@ public class Car {
 
     public void easyMode() {
         if (!tiny) {
-            carPic.delete();
-            carPic = new Picture(posX, posY, carEasy);
             carPic.load(carEasy);
-            carPic.draw();
             tiny = true;
         }
         else if (tiny) {
-            carPic.delete();
-            carPic = new Picture(posX, posY, carRight);
+            //carPic.delete();
+            //carPic = new Picture(posX, posY, carRight);
             carPic.load(carRight);
-            carPic.draw();
+            //carPic.draw();
             tiny = false;
         }
     }
@@ -93,16 +94,27 @@ public class Car {
     }
 
 
-    public void changeToCheatImage() {
-        carPic.load(cheatCar);
+    public void changeToFerrari() {
+        if (taxi) {
+            carPic.load(ferrari);
+            taxi = false;
+        }
+        else if (!taxi) {
+            changeToOriginalImage();
+            taxi = true;
+        }
     }
-    public void changeToSnailImage() {
-        carPic.load(snail);
+    public void changeToSnail() {
+        if (taxi) {
+            carPic.load(snail);
+            taxi = false;
+        } else if (!taxi) {
+            changeToOriginalImage();
+            taxi = true;
+        }
     }
-    public void changeToOriginalImage() {
-        carPic.load(carRight);
-    }
-
-
+        public void changeToOriginalImage () {
+            carPic.load(carRight);
+        }
 }
 

@@ -7,8 +7,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-
-
         //Canvas.setMaxX(1200);
         //Canvas.setMaxY(700);
         // x, y, width, height

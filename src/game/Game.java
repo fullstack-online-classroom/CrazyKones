@@ -18,12 +18,13 @@ public class Game {
 
     private Picture gameOverPic;
 
-    public List<Kone> kones;
     private Score score;
-    private ScoreManager scoreManager = new ScoreManager();
+
+    private ScoreManager scoreManager;
     private Text finalScoreText; // Add this field to keep track of the final score text
 
     public Game() {
+        scoreManager = new ScoreManager();
         obstacleFactory = new ObstacleFactory();
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
         this.gameOverPic = gameOverPic;
@@ -91,7 +92,7 @@ public class Game {
                 }
                 finalScoreText = new Text(893, 50, "High Score: " + finalScore);
                 finalScoreText.setColor(Color.RED);
-                finalScoreText.grow(100, 40);
+                finalScoreText.grow(100, 40); //text box size
                 finalScoreText.draw();
             } else {
                 // If the final score is not greater, draw the high score
@@ -109,10 +110,10 @@ public class Game {
     public void gameRestart(){
         if (!gameStarted) {
             gameOverPic.delete();
-            obstacleFactory.removeObstacles();
-            kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             score.resetScore(); // reset the score
             car.changeToOriginalImage();
+            obstacleFactory.removeObstacles();
+            //kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             gameStarted = true;
             // change the car image back to the original one
         }
