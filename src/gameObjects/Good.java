@@ -1,4 +1,4 @@
-package game;
+package gameObjects;
 
 public interface Good {
     public int plusPoint();

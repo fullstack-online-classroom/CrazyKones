@@ -1,5 +1,7 @@
-package game;
+package gameObjects;
 
+import game.Background;
+import game.Game;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Kone extends Obstacle implements Bad {
 

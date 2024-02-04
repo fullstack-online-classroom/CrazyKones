@@ -1,5 +1,7 @@
 package game;
 
+import gameObjects.Car;
+import gameObjects.Obstacle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;

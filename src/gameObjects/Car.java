@@ -1,7 +1,8 @@
-package game;
+package gameObjects;
 
 import game.Background;
 import game.Game;
+import game.Speed;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.swing.*;

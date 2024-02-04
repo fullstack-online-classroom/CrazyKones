@@ -1,5 +1,7 @@
 package game;
 
+import gameObjects.Car;
+
 public class Main {
 
 
