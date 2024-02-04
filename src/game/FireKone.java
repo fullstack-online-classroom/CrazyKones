@@ -2,41 +2,42 @@ package game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Client extends Obstacle implements Good {
+public class FireKone extends Obstacle implements Bad {
 
-    private Picture clientPic;
+    private Picture fireKonePic;
 
     private int posX;
     private int posY;
 
-    public Client() {
+    public FireKone() {
         super();
         posX = Background.getWidth()-120;
         posY = (int) Math.round(Math.random() * (Background.getHeight()-120));
-        clientPic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "client.png");
-        clientPic.draw();
+        //posY = Background.getHeight();
+        fireKonePic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "fireKone.png");
+        fireKonePic.draw();
         move();
     }
 
     public void move(){ //need to improve to check if obst hit edge of image
         if(posX > 0){
             posX-=100;
-            clientPic.translate(-200, 0);
+            fireKonePic.translate(-200, 0);
         }
         else {
-            clientPic.delete();
+            fireKonePic.delete();
         }
     }
-
-    public int plusPoint(){
-        return 2;
+    public int minusPoint(){
+        return 1;
     }
 
-    public void deletePic() {
-        clientPic.delete();
+    public void deletePic(){
+        fireKonePic.delete();
     }
 
     public Picture getPic(){
-        return clientPic;
+        return fireKonePic;
     }
+
 }

@@ -18,29 +18,25 @@ public class Car {
     private String carRight;
     private String carLeft;
 
-    private String carEasy;
+    private String carTiny;
     private String carUp;
     private String carDown;
 
     private boolean taxi;
-    private boolean tiny;
 
     private boolean godMode;
 
     private String ferrari;
     private String snail;
 
-    private Game game;///////////////////////////////////////////////////////////////////////////7
-
 
     public Car(){
-        game = new Game();/////////////////////////////////////////////////////////////7
         carRight = Game.RESOURCES_PREFIX + "carStandard.png";
         carLeft = Game.RESOURCES_PREFIX + "carLeft.png";
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
         carDown = Game.RESOURCES_PREFIX + "carDown.png";
-        carEasy = Game.RESOURCES_PREFIX + "carEasy.png";
-        ferrari = Game.RESOURCES_PREFIX + "cheatcar.png";
+        carTiny = Game.RESOURCES_PREFIX + "carTiny.png";
+        ferrari = Game.RESOURCES_PREFIX + "ferrari.png";
         snail = Game.RESOURCES_PREFIX + "Snail.png";
 
         carPic = new Picture(posX, posY, carRight);
@@ -69,16 +65,16 @@ public class Car {
     }
 
     public void easyMode() {
-        if (!tiny) {
-            carPic.load(carEasy);
-            tiny = true;
-        }
-        else if (tiny) {
+        if (taxi) {
             //carPic.delete();
-            //carPic = new Picture(posX, posY, carRight);
-            carPic.load(carRight);
+            //carPic = new Picture(posX, posY, carTiny);
+            carPic.load(carTiny);
             //carPic.draw();
-            tiny = false;
+            taxi = false;
+        }
+        else if (!taxi) {
+            changeToTaxi();
+            taxi = true;
         }
     }
 
@@ -111,7 +107,7 @@ public class Car {
     public void changeToSnail() {
         if (taxi) {
             carPic.load(snail);
-            game.setSPEED(Speed.FAST.getSpeedValue());////////////////////////////////////////////////////////
+            Game.setSPEED(Speed.FAST.getSpeedValue());////////////////////////////////////////////////////////
             taxi = false;
         } else if (!taxi) {
             changeToTaxi();
@@ -129,7 +125,7 @@ public class Car {
         carPic.load(carRight);
         taxi = true;
         godMode = false;
-        game.setSPEED(10);
+        Game.setSPEED(10);
         }
     }
 

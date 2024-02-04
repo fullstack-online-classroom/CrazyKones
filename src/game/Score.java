@@ -32,6 +32,10 @@ public void startTimer() {
         score = 0;
         scoreText.setText("Score: " + score);
     }
+    public void upScore(int point) {
+        score = score + point;
+    }
+
 public int getScore() {
     return score;
 }
