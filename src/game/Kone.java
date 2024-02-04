@@ -18,7 +18,7 @@ public class Kone extends Obstacle implements Bad {
         move();
     }
 
-    public void move(){
+    public void move(){ //need to improve to check if obst hit edge of image
         if(posX > 0){
             posX-=100;
             konePic.translate(-200, 0);
@@ -26,6 +26,9 @@ public class Kone extends Obstacle implements Bad {
         else {
             konePic.delete();
         }
+    }
+    public int minusPoint(){
+        return 1;
     }
 
     public void deletePic(){

@@ -128,7 +128,7 @@ public class Game {
         this.score = score;
     }
 
-    public void setSPEED(int SPEED){ //////////////////////////////////////////////////7
+    public static void setSPEED(int SPEED){ //////////////////////////////////////////////////7
         Game.SPEED = SPEED;
     }
 }
