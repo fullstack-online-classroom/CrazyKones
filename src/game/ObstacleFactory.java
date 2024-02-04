@@ -1,13 +1,11 @@
 package game;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ObstacleFactory {
 
-    public List<Obstacle> obstacles = new ArrayList<>();
+    private List<Obstacle> obstacles = new ArrayList<>();
 
     public ObstacleFactory() {
     }

@@ -1,5 +1,7 @@
 package game;
 
+import game.Background;
+import game.Game;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.swing.*;
@@ -23,11 +25,16 @@ public class Car {
     private boolean taxi;
     private boolean tiny;
 
+    private boolean godMode;
+
     private String ferrari;
     private String snail;
 
+    private Game game;///////////////////////////////////////////////////////////////////////////7
+
 
     public Car(){
+        game = new Game();/////////////////////////////////////////////////////////////7
         carRight = Game.RESOURCES_PREFIX + "carStandard.png";
         carLeft = Game.RESOURCES_PREFIX + "carLeft.png";
         carUp = Game.RESOURCES_PREFIX + "carUp.png";
@@ -46,9 +53,6 @@ public class Car {
         this.background = background;
     }
 
-    public Picture getCarPic(){
-        return carPic;
-    }
     public void moveUp() {
 
         if (carPic.getY() - Game.SPEED >= 0) {
@@ -98,23 +102,34 @@ public class Car {
         if (taxi) {
             carPic.load(ferrari);
             taxi = false;
+            godMode = true;
         }
         else if (!taxi) {
-            changeToOriginalImage();
-            taxi = true;
+            changeToTaxi();
         }
     }
     public void changeToSnail() {
         if (taxi) {
             carPic.load(snail);
+            game.setSPEED(Speed.FAST.getSpeedValue());////////////////////////////////////////////////////////
             taxi = false;
         } else if (!taxi) {
-            changeToOriginalImage();
-            taxi = true;
+            changeToTaxi();
         }
     }
-        public void changeToOriginalImage () {
-            carPic.load(carRight);
+
+    public boolean getGodMode() {
+        return godMode;
+    }
+    public Picture getCarPic(){
+        return carPic;
+    }
+
+    public void changeToTaxi () {
+        carPic.load(carRight);
+        taxi = true;
+        godMode = false;
+        game.setSPEED(10);
         }
-}
+    }
 

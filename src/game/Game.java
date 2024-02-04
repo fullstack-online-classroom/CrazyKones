@@ -4,13 +4,13 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.util.*;
 public class Game {
 
-    public static final int SPEED = 10;
+    public static int SPEED = Speed.MEDIUM.getSpeedValue(); //acessed by enum???????????????????????????????????????
+
     public static final String RESOURCES_PREFIX = "resources/";
 
-    public boolean gameStarted = true;
+    private boolean gameStarted = true;
 
     private Car car;
 
@@ -52,31 +52,32 @@ public class Game {
         }
     }
 
-    public void moveObstacles(){
+    private void moveObstacles(){
         //List<Obstacle> obstacleArray = obstacleFactory.getObstacles();
-        for(Obstacle obstacle: obstacleFactory.getObstacles()){
+        for(Obstacle obstacle: obstacleFactory.getObstacles()) {
             if (!gameStarted) {
                 return;
             }
             obstacle.move();
-            colissionDetector(obstacle);
+            if (!car.getGodMode()) {
+                colissionDetector(obstacle);
+            }
         }
     }
 
 
-    public void colissionDetector(Obstacle obstacle) {
+    private void colissionDetector(Obstacle obstacle) {
 
         Picture obstaclePic = obstacle.getPic();
         Picture carPic = car.getCarPic();
 
-        if (carPic.getX() + carPic.getWidth() >= obstaclePic.getX() && carPic.getY() + carPic.getHeight() >= obstaclePic.getY() &&
-                carPic.getY() <= obstaclePic.getY() + obstaclePic.getHeight() && carPic.getX() <= obstaclePic.getX() + obstaclePic.getWidth())
-        {
+            if (carPic.getX() + carPic.getWidth() >= obstaclePic.getX() && carPic.getY() + carPic.getHeight() >= obstaclePic.getY() &&
+                    carPic.getY() <= obstaclePic.getY() + obstaclePic.getHeight() && carPic.getX() <= obstaclePic.getX() + obstaclePic.getWidth()) {
                 gameOver();
-        }
+            }
     }
 
-    public void gameOver(){
+    private void gameOver(){
         if (gameStarted) {
             gameStarted = false;
             gameOverPic.draw();
@@ -111,7 +112,7 @@ public class Game {
         if (!gameStarted) {
             gameOverPic.delete();
             score.resetScore(); // reset the score
-            car.changeToOriginalImage();
+            car.changeToTaxi();
             obstacleFactory.removeObstacles();
             //kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             gameStarted = true;
@@ -125,5 +126,9 @@ public class Game {
     }
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public void setSPEED(int SPEED){ //////////////////////////////////////////////////7
+        Game.SPEED = SPEED;
     }
 }

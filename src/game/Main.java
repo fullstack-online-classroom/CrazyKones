@@ -1,7 +1,5 @@
 package game;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-
 public class Main {
 
 
