@@ -35,7 +35,4 @@ public class ObstacleFactory {
         return obstacles;
     }
 
-    public void setObstacle() {
-
-    }
 }

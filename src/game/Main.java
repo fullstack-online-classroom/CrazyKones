@@ -18,17 +18,20 @@ public class Main {
 
         Background background = new Background();
         Car car = new Car();
-        //Client client = new Client();
         car.setBackground(background);
 
         Score score = new Score();
         score.startTimer();
-        game.setScore(score); // set the score in the gameee
+        game.setScore(score); // set the score in the game
 
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);
         keyboardLogic.setGame(game);
+
         game.setCar(car);
+        CollisionDetector collisionDetector = new CollisionDetector();
+        game.setColissionDetector(collisionDetector);
+        collisionDetector.setGame(game);
 
         game.start();
     }

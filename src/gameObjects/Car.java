@@ -23,7 +23,7 @@ public class Car {
     private String carUp;
     private String carDown;
 
-    private boolean taxi;
+    private boolean taxi = true;
 
     private boolean godMode;
 
@@ -44,7 +44,6 @@ public class Car {
         carPic.load(carRight);
         carPic.draw();
     }
-    //picture = new Picture(STARTING_X, STARTING_Y, "Resources/catiaStreetStore.PNG"); //Create Character model on the screen
 
     public void setBackground(Background background) {
         this.background = background;
@@ -67,10 +66,7 @@ public class Car {
 
     public void easyMode() {
         if (taxi) {
-            //carPic.delete();
-            //carPic = new Picture(posX, posY, carTiny);
             carPic.load(carTiny);
-            //carPic.draw();
             taxi = false;
         }
         else if (!taxi) {
@@ -108,7 +104,7 @@ public class Car {
     public void changeToSnail() {
         if (taxi) {
             carPic.load(snail);
-            Game.setSPEED(Speed.FAST.getSpeedValue());////////////////////////////////////////////////////////
+            Game.setSpeed(Speed.FAST.getSpeedValue());
             taxi = false;
         } else if (!taxi) {
             changeToTaxi();
@@ -126,7 +122,7 @@ public class Car {
         carPic.load(carRight);
         taxi = true;
         godMode = false;
-        Game.setSPEED(10);
+        Game.setSpeed(10);
         }
     }
 
