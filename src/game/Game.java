@@ -1,12 +1,14 @@
 package game;
 
+import gameObjects.Car;
+import gameObjects.Obstacle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
-    public static int SPEED = Speed.MEDIUM.getSpeedValue(); //acessed by enum???????????????????????????????????????
+    public static int SPEED;
 
     public static final String RESOURCES_PREFIX = "resources/";
 
@@ -23,17 +25,18 @@ public class Game {
     private ScoreManager scoreManager;
     private Text finalScoreText; // Add this field to keep track of the final score text
 
+    private CollisionDetector colissionDetector;
+
     public Game() {
+        SPEED = Speed.MEDIUM.getSpeedValue();//acessed by enum
         scoreManager = new ScoreManager();
         obstacleFactory = new ObstacleFactory();
         Picture gameOverPic = new Picture(0, 0, Game.RESOURCES_PREFIX + "gameOverScreen.png");
         this.gameOverPic = gameOverPic;
     }
 
-    public void start() throws InterruptedException {
-        //List<Obstacle> obstacleArray = obstacleFactory.getObstacles();
-        int randomizer = 0; //1 to 5
-        //kones = new ArrayList<>();
+    public void start() throws InterruptedException { //missing a catch
+        int randomizer = 0; //1 to 5 we need to create a strategy DP to replace this
         while (gameStarted) {
             moveObstacles();
             randomizer = (int) (Math.random() * 5) + 1;
@@ -43,7 +46,6 @@ public class Game {
             }
             if(randomizer >= 3) {
                 obstacleFactory.addKone();
-                ;
             }
             if(randomizer < 3) {
                 obstacleFactory.addClient();
@@ -53,31 +55,19 @@ public class Game {
     }
 
     private void moveObstacles(){
-        //List<Obstacle> obstacleArray = obstacleFactory.getObstacles();
+        colissionDetector.setCar(car);
         for(Obstacle obstacle: obstacleFactory.getObstacles()) {
             if (!gameStarted) {
                 return;
             }
             obstacle.move();
             if (!car.getGodMode()) {
-                colissionDetector(obstacle);
+                colissionDetector.collision(obstacle);
             }
         }
     }
 
-
-    private void colissionDetector(Obstacle obstacle) {
-
-        Picture obstaclePic = obstacle.getPic();
-        Picture carPic = car.getCarPic();
-
-            if (carPic.getX() + carPic.getWidth() >= obstaclePic.getX() && carPic.getY() + carPic.getHeight() >= obstaclePic.getY() &&
-                    carPic.getY() <= obstaclePic.getY() + obstaclePic.getHeight() && carPic.getX() <= obstaclePic.getX() + obstaclePic.getWidth()) {
-                gameOver();
-            }
-    }
-
-    private void gameOver(){
+    public void gameOver(){
         if (gameStarted) {
             gameStarted = false;
             gameOverPic.draw();
@@ -114,21 +104,24 @@ public class Game {
             score.resetScore(); // reset the score
             car.changeToTaxi();
             obstacleFactory.removeObstacles();
-            //kones = new ArrayList<>(); //call obstacleFactory????????   THIS NEEDS TO CHANGE TO OBSTACLES
             gameStarted = true;
-            // change the car image back to the original one
         }
     }
 
-    //we could also have created a setObstacleFactory
     public void setCar(Car car){
         this.car = car;
     }
+
+    public void setColissionDetector(CollisionDetector colissionDetector){
+        this.colissionDetector = colissionDetector;
+    }
+
     public void setScore(Score score) {
         this.score = score;
     }
 
-    public static void setSPEED(int SPEED){ //////////////////////////////////////////////////7
-        Game.SPEED = SPEED;
+    public static void setSpeed(int speed){ //static works here since there is only 1game1car we change class prop
+        Game.SPEED = speed;
     }
+
 }

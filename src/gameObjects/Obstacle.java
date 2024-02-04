@@ -1,4 +1,4 @@
-package game;
+package gameObjects;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 

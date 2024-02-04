@@ -1,5 +1,9 @@
 package game;
 
+import gameObjects.Client;
+import gameObjects.Kone;
+import gameObjects.Obstacle;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +35,4 @@ public class ObstacleFactory {
         return obstacles;
     }
 
-    public void setObstacle() {
-
-    }
 }
