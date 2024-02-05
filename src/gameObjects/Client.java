@@ -17,7 +17,7 @@ public class Client extends Obstacle implements Good {
         posY = (int) Math.round(Math.random() * (Background.getHeight()-120));
         clientPic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "client.png");
         clientPic.draw();
-        move();
+        //move();///////////////////////////???? remove and move later
     }
 
     public void move(){ //need to improve to check if obst hit edge of image

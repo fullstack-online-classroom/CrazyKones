@@ -17,7 +17,7 @@ public class Kone extends Obstacle implements Bad {
         //posY = Background.getHeight();
         konePic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "kone.png");
         konePic.draw();
-        move();
+        //move();
     }
 
     public void move(){ //need to improve to check if obst hit edge of image

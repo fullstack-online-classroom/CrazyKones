@@ -12,7 +12,7 @@ public class Game {
 
     public static final String RESOURCES_PREFIX = "resources/";
 
-    private boolean gameStarted = true;
+    private boolean gameStarted = true; //was true before menu
 
     private Car car;
 
@@ -36,25 +36,26 @@ public class Game {
         this.gameOverPic = gameOverPic;
     }
 
-    public void start() throws InterruptedException { //missing a catch
-        gameStarted = true;
+    public void start() throws InterruptedException { //game breaks in main if exception is thrown
+        //gameStarted = true;
         int randomizer = 0; //1 to 5 we need to create a strategy DP to replace this
         while (gameStarted) {
             System.out.println("bananas"); //it had (controlsPic == null); without sout bc of sleep it goes out of loop and never starts
             if(controlsPic == null) {
-                moveObstacles();
                 randomizer = (int) (Math.random() * 5) + 1;
-                //change to when it hits the border of background
+                //implement in move a verif to check if it hit the edge of the background
                 if (obstacleFactory.getObstacles().size() == 8) {
-                    obstacleFactory.getObstacles().remove(0);
+                    obstacleFactory.removeObstacle(0);
                 }
                 if (randomizer >= 3) {
                     obstacleFactory.addKone();
                 }
-                if (randomizer < 3) {
+                else if (randomizer < 3) {
                     obstacleFactory.addClient();
                 }
-                Thread.sleep(1000);
+                moveObstacles();
+                Thread.sleep(1000); //search game loops without sleep or put sleep inside move
+                //System.out.println(Thread.currentThread().getName());
             }
         }
     }

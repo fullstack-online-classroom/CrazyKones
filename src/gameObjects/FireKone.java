@@ -18,7 +18,7 @@ public class FireKone extends Obstacle implements Bad {
         //posY = Background.getHeight();
         fireKonePic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "fireKone.png");
         fireKonePic.draw();
-        move();
+        //move();
     }
 
     public void move(){ //need to improve to check if obst hit edge of image

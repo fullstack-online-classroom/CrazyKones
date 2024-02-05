@@ -12,9 +12,6 @@ public abstract class Obstacle {
         return new Picture();
     }
 
-    public void move(){
-
-    }
-
+    public abstract void move();
 
 }

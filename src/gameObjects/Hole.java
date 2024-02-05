@@ -18,7 +18,7 @@ public class Hole extends Obstacle implements Bad {
         //posY = Background.getHeight();
         holePic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "hole.png");
         holePic.draw();
-        move();
+        //move();
     }
 
     public void move(){ //need to improve to check if obst hit edge of image

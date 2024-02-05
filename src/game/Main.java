@@ -20,10 +20,6 @@ public class Main {
         Car car = new Car();
         car.setBackground(background);
 
-        //Score score = new Score();
-        //score.startTimer();
-        //game.setScore(score); // set the score in the game
-
         KeyboardLogic keyboardLogic = new KeyboardLogic();
         keyboardLogic.setCar(car);
         keyboardLogic.setGame(game);

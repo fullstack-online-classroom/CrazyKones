@@ -123,7 +123,7 @@ public class KeyboardLogic implements KeyboardHandler {
         }
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_ESC){
-            //game.;  misssinggggg ecs implementationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn????
+            // system exit java
         }
 
         // cheating code to change the car image

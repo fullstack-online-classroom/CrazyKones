@@ -31,6 +31,11 @@ public class ObstacleFactory {
         }
     }
 
+    public void removeObstacle(int i){
+            obstacles.get(i).deletePic();
+            obstacles.remove(i);
+    }
+
     public List<Obstacle> getObstacles() {
         return obstacles;
     }
