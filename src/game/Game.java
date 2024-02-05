@@ -19,6 +19,7 @@ public class Game {
     private ObstacleFactory obstacleFactory;
 
     private Picture gameOverPic;
+    private Picture controlsPic;
 
     private Score score;
 
@@ -36,21 +37,25 @@ public class Game {
     }
 
     public void start() throws InterruptedException { //missing a catch
+        gameStarted = true;
         int randomizer = 0; //1 to 5 we need to create a strategy DP to replace this
         while (gameStarted) {
-            moveObstacles();
-            randomizer = (int) (Math.random() * 5) + 1;
-            //change to when it hits the border of background
-            if (obstacleFactory.getObstacles().size() == 8) {
-                obstacleFactory.getObstacles().remove(0);
+            System.out.println("bananas"); //it had (controlsPic == null); without sout bc of sleep it goes out of loop and never starts
+            if(controlsPic == null) {
+                moveObstacles();
+                randomizer = (int) (Math.random() * 5) + 1;
+                //change to when it hits the border of background
+                if (obstacleFactory.getObstacles().size() == 8) {
+                    obstacleFactory.getObstacles().remove(0);
+                }
+                if (randomizer >= 3) {
+                    obstacleFactory.addKone();
+                }
+                if (randomizer < 3) {
+                    obstacleFactory.addClient();
+                }
+                Thread.sleep(1000);
             }
-            if(randomizer >= 3) {
-                obstacleFactory.addKone();
-            }
-            if(randomizer < 3) {
-                obstacleFactory.addClient();
-            }
-            Thread.sleep(1000);
         }
     }
 
@@ -106,6 +111,30 @@ public class Game {
             obstacleFactory.removeObstacles();
             gameStarted = true;
         }
+    }
+
+    public void setUpScores(){
+        Score score = new Score();
+        score.startTimer();
+        setScore(score); // set the score in the game
+    }
+
+    public void DrawControls(Background background){
+        float centerPosX = background.getBackground().getWidth() /5;
+        float centerPosY = background.getBackground().getHeight()/5;
+        controlsPic = new Picture(centerPosX,centerPosY,Game.RESOURCES_PREFIX + "controls.png");
+        controlsPic.draw();
+    }
+
+    public void RemoveControls(){
+        if(controlsPic == null){
+            return;
+        }
+        controlsPic.delete();
+        controlsPic = null;
+
+        gameStarted = true;
+        setUpScores();
     }
 
     public void setCar(Car car){
