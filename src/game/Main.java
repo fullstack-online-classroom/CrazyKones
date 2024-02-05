@@ -29,7 +29,7 @@ public class Main {
         game.setCar(car);
 
         game.DrawControls(background);
-        //game.start();
+        game.start();
 
     }
 }

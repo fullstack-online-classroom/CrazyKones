@@ -34,25 +34,30 @@ public class Game {
     public void start() throws InterruptedException {
         gameStarted = true;
 
-        Score score = new Score();
-        score.startTimer();
-        setScore(score); // set the score in the game
-
         int counter = 0;
         int dificulty = 1000;
         kones = new ArrayList<>();
         while (gameStarted) {
-            counter++;
-            moveKones();
-            if (kones.size() == 8) {
-                kones.remove(0);
+            System.out.println(controlsPic == null);
+            if(controlsPic == null){
+                counter++;
+                moveKones();
+                if (kones.size() == 8) {
+                    kones.remove(0);
+                }
+                if(counter >= 3) {
+                    createKone();
+                    counter = 0;
+                }
+                Thread.sleep(dificulty--);
             }
-            if(counter >= 3) {
-                createKone();
-                counter = 0;
-            }
-            Thread.sleep(dificulty--);
         }
+    }
+
+    public void setUpScores(){
+        Score score = new Score();
+        score.startTimer();
+        setScore(score); // set the score in the game
     }
 
     public void DrawControls(Background background){
@@ -62,20 +67,14 @@ public class Game {
         controlsPic.draw();
     }
 
-    public boolean CheckIfControlsAreOpen(){
-        return (controlsPic!= null);}
-
     public void RemoveControls(){
+        if(controlsPic == null)return;
         controlsPic.delete();
-        System.out.println("AAAAAAAA");
+        controlsPic = null;
 
-
-
-        try{
-            start();
-        }catch (Exception e){
-            gameRestart();
-        }
+        gameStarted = true;
+        setUpScores();
+        createKone();
     }
 
     public void createKone(){
@@ -84,6 +83,7 @@ public class Game {
     }
 
     public void moveKones(){
+        System.out.println("aaaasdasssssssssssssssd");
         for(Kone kone: kones){
             if (!gameStarted) {
                 return;

@@ -26,12 +26,12 @@ public class KeyboardLogic implements KeyboardHandler {
         keyboard.addEventListener(left);
 
         KeyboardEvent up = new KeyboardEvent();
-        up.setKey(KeyboardEvent.KEY_UP);
+        up.setKey(KeyboardEvent.KEY_W);
         up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(up);
 
         KeyboardEvent down = new KeyboardEvent();
-        down.setKey(KeyboardEvent.KEY_DOWN);
+        down.setKey(KeyboardEvent.KEY_S);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(down);
 
@@ -49,6 +49,11 @@ public class KeyboardLogic implements KeyboardHandler {
         enter.setKey(KeyboardEvent.KEY_ENTER);
         enter.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(enter);
+
+        KeyboardEvent exit = new KeyboardEvent();
+        exit.setKey(KeyboardEvent.KEY_ESC);
+        exit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(exit);
     }
 
     public void setCar(Car car) {
@@ -69,11 +74,11 @@ public class KeyboardLogic implements KeyboardHandler {
             car.moveLeft();
         }*/
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_UP){
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_W){
             car.moveUp();
         }
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN){
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
             car.moveDown();
         }
 
@@ -86,12 +91,14 @@ public class KeyboardLogic implements KeyboardHandler {
         }
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER){
-            if(game.CheckIfControlsAreOpen())
-            {
-                game.RemoveControls();
-            }
+            game.RemoveControls();
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_ESC){
+            //game.;
         }
     }
+
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
