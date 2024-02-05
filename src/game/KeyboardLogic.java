@@ -72,6 +72,16 @@ public class KeyboardLogic implements KeyboardHandler {
         releaseSKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(releaseSKey);
 
+        KeyboardEvent enter = new KeyboardEvent();
+        enter.setKey(KeyboardEvent.KEY_ENTER);
+        enter.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(enter);
+
+        KeyboardEvent exit = new KeyboardEvent();
+        exit.setKey(KeyboardEvent.KEY_ESC);
+        exit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(exit);
+
     }
 
     public void setCar(Car car) {
@@ -106,8 +116,14 @@ public class KeyboardLogic implements KeyboardHandler {
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
                 game.gameRestart();
+        }
 
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER){
+            game.RemoveControls();
+        }
 
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_ESC){
+            //game.;  misssinggggg ecs implementationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn????
         }
 
         // cheating code to change the car image
