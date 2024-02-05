@@ -4,12 +4,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public abstract class Obstacle {
 
+    public Picture pic;
 
-    public void deletePic() {
+    public Obstacle(){
     }
+    public void deletePic() {
+    } //implement here instead of each object
 
     public Picture getPic(){
-        return new Picture();
+        return pic;
     }
 
     public abstract void move();
