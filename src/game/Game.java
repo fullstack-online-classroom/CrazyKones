@@ -67,7 +67,6 @@ public class Game {
     }
 
     private void moveObstacles(){
-        colissionDetector.setCar(car);
         for(Obstacle obstacle: obstacleFactory.getObstacles()) {
             if (!gameStarted) {
                 return;

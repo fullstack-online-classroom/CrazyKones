@@ -30,6 +30,7 @@ public class Main {
         CollisionDetector collisionDetector = new CollisionDetector();
         game.setColissionDetector(collisionDetector);
         collisionDetector.setGame(game);
+        collisionDetector.setCar(car);
         Obstacle.setCar(car);/////////////////////////////////////////////////
 
         game.DrawControls(background);
