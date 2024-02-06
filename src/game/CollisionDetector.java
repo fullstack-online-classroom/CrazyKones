@@ -21,8 +21,8 @@ public class CollisionDetector {
                 ((Effect) obstacle).fire();
             }
             if (obstacle instanceof Good){
-                ((Good) obstacle).outFire();
                 ((Good) obstacle).plusPoint();
+                ((Good) obstacle).outFire();
             }
         }
     }

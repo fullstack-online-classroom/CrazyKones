@@ -44,7 +44,7 @@ public class Game {
             if(controlsPic == null) {
                 randomizer = (int) (Math.random() * 5) + 1; // 1 to 5
                 //implement in move a verif to check if it hit the edge of the background
-                if (obstacleFactory.getObstacles().size() == 8) {
+                if (obstacleFactory.getObstacles().size() == 10) {
                     obstacleFactory.removeObstacle(0);
                 }
                 switch (randomizer) {
