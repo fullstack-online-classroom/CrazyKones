@@ -39,29 +39,31 @@ public class Game {
     public void start() throws InterruptedException { //game breaks in main if exception is thrown
         //gameStarted = true;
         int randomizer = 0; //1 to 5 we need to create a strategy DP to replace this
-        while (gameStarted) {
-            System.out.println("bananas"); //it had (controlsPic == null); without sout bc of sleep it goes out of loop and never starts
+        while (true) { //was game started
+            System.out.println(""); //it had (controlsPic == null); without sout bc of sleep it goes out of loop and never starts
             if(controlsPic == null) {
                 randomizer = (int) (Math.random() * 5) + 1; // 1 to 5
                 //implement in move a verif to check if it hit the edge of the background
                 if (obstacleFactory.getObstacles().size() == 10) {
                     obstacleFactory.removeObstacle(0);
                 }
-                switch (randomizer) {
-                    case 1:
-                    case 2:
-                        obstacleFactory.addFireKone();
-                        break;
-                    case 3:
-                        obstacleFactory.addClient();
-                        break;
-                    default:
-                        obstacleFactory.addKone();
-                        break;
+                if (gameStarted) {
+                    switch (randomizer) {
+                        case 1:
+                        case 2:
+                            obstacleFactory.addFireKone();
+                            break;
+                        case 3:
+                            obstacleFactory.addClient();
+                            break;
+                        default:
+                            obstacleFactory.addKone();
+                            break;
+                    }
+                    Thread.sleep(1000); //search game loops without sleep or put sleep inside move
+                    //System.out.println(Thread.currentThread().getName());
                 }
                 moveObstacles();
-                Thread.sleep(1000); //search game loops without sleep or put sleep inside move
-                //System.out.println(Thread.currentThread().getName());
             }
         }
     }
