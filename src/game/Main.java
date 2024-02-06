@@ -1,6 +1,7 @@
 package game;
 
 import gameObjects.Car;
+import gameObjects.Obstacle;
 
 public class Main {
 
@@ -28,6 +29,7 @@ public class Main {
         CollisionDetector collisionDetector = new CollisionDetector();
         game.setColissionDetector(collisionDetector);
         collisionDetector.setGame(game);
+        Obstacle.setCar(car);/////////////////////////////////////////////////
 
         game.DrawControls(background);
         game.start();

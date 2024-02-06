@@ -1,7 +1,6 @@
 package game;
 
-import gameObjects.Car;
-import gameObjects.Obstacle;
+import gameObjects.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class CollisionDetector {
@@ -15,7 +14,15 @@ public class CollisionDetector {
 
         if (carPic.getX() + carPic.getWidth() >= obstaclePic.getX() && carPic.getY() + carPic.getHeight() >= obstaclePic.getY() &&
                 carPic.getY() <= obstaclePic.getY() + obstaclePic.getHeight() && carPic.getX() <= obstaclePic.getX() + obstaclePic.getWidth()) {
-            game.gameOver();
+            if(obstacle instanceof Bad){
+                game.gameOver();
+            }
+            if (obstacle instanceof Effect){
+                ((Effect) obstacle).fire();
+            }
+            if (obstacle instanceof Good){
+                ((Good) obstacle).outFire();
+            }
         }
     }
 

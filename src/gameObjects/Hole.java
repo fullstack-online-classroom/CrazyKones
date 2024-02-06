@@ -2,9 +2,10 @@ package gameObjects;
 
 import game.Background;
 import game.Game;
+import game.Speed;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Hole extends Obstacle implements Bad {
+public class Hole extends Obstacle implements Effect {
 
     private Picture holePic;
 
@@ -19,6 +20,11 @@ public class Hole extends Obstacle implements Bad {
         holePic = new Picture(posX, posY, Game.RESOURCES_PREFIX + "hole.png");
         holePic.draw();
         //move();
+    }
+
+    public void changeSpeed() {
+        car.onFire();
+        //Game.setSpeed(Speed.SLOW.getSpeedValue());
     }
 
     public void move(){ //need to improve to check if obst hit edge of image
@@ -42,4 +48,8 @@ public class Hole extends Obstacle implements Bad {
         return holePic;
     }
 
+    @Override
+    public void fire() {
+
+    }
 }

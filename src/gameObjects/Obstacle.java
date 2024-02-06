@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public abstract class Obstacle {
 
     public Picture pic;
+    public static Car car;
 
     public Obstacle(){
     }
@@ -16,5 +17,9 @@ public abstract class Obstacle {
     }
 
     public abstract void move();
+
+    public static void setCar(Car car){///////////////////////////////
+        Obstacle.car = car;
+    }
 
 }

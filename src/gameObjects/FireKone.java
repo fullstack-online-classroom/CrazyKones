@@ -4,7 +4,7 @@ import game.Background;
 import game.Game;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class FireKone extends Obstacle implements Bad {
+public class FireKone extends Obstacle implements Effect {
 
     private Picture fireKonePic;
 
@@ -30,8 +30,10 @@ public class FireKone extends Obstacle implements Bad {
             fireKonePic.delete();
         }
     }
-    public int minusPoint(){
-        return 1;
+
+    public void fire() {
+        car.onFire();
+        //Game.setSpeed(Speed.SLOW.getSpeedValue());
     }
 
     public void deletePic(){

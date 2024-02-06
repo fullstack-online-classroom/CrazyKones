@@ -42,16 +42,22 @@ public class Game {
         while (gameStarted) {
             System.out.println("bananas"); //it had (controlsPic == null); without sout bc of sleep it goes out of loop and never starts
             if(controlsPic == null) {
-                randomizer = (int) (Math.random() * 5) + 1;
+                randomizer = (int) (Math.random() * 5) + 1; // 1 to 5
                 //implement in move a verif to check if it hit the edge of the background
                 if (obstacleFactory.getObstacles().size() == 8) {
                     obstacleFactory.removeObstacle(0);
                 }
-                if (randomizer >= 3) {
-                    obstacleFactory.addKone();
-                }
-                else if (randomizer < 3) {
-                    obstacleFactory.addClient();
+                switch (randomizer) {
+                    case 1:
+                    case 2:
+                        obstacleFactory.addFireKone();
+                        break;
+                    case 3:
+                        obstacleFactory.addClient();
+                        break;
+                    default:
+                        obstacleFactory.addKone();
+                        break;
                 }
                 moveObstacles();
                 Thread.sleep(1000); //search game loops without sleep or put sleep inside move
@@ -112,6 +118,11 @@ public class Game {
             obstacleFactory.removeObstacles();
             gameStarted = true;
         }
+    }
+
+    public void ExitGame(){
+        //ExitGame = true;
+        System.exit(0);
     }
 
     public void setUpScores(){

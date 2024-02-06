@@ -1,8 +1,6 @@
 package game;
 
-import gameObjects.Client;
-import gameObjects.Kone;
-import gameObjects.Obstacle;
+import gameObjects.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +15,11 @@ public class ObstacleFactory {
     public void addKone(){
         Kone kone = new Kone();
         obstacles.add(kone);
+    }
+
+    public void addFireKone(){
+        FireKone fireKone = new FireKone();
+        obstacles.add(fireKone);
     }
 
     public void addClient(){

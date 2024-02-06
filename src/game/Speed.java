@@ -2,8 +2,8 @@ package game;
 
 public enum Speed {
     FAST(20),
-    MEDIUM(10),
-    SLOW(2);
+    MEDIUM(11),
+    SLOW(3);
     private int speedValue;
 
     Speed(int speedValue){

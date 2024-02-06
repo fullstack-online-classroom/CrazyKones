@@ -33,6 +33,11 @@ public class Client extends Obstacle implements Good {
         return 2;
     }
 
+    @Override
+    public void outFire() {
+        car.notOnFire();
+    }
+
     public void deletePic() {
         clientPic.delete();
     }

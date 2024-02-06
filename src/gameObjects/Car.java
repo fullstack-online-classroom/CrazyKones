@@ -30,6 +30,8 @@ public class Car {
     private String ferrari;
     private String snail;
 
+    private String onFire;
+
 
     public Car(){
         carRight = Game.RESOURCES_PREFIX + "carStandard.png";
@@ -39,6 +41,7 @@ public class Car {
         carTiny = Game.RESOURCES_PREFIX + "carTiny.png";
         ferrari = Game.RESOURCES_PREFIX + "ferrari.png";
         snail = Game.RESOURCES_PREFIX + "Snail.png";
+        onFire = Game.RESOURCES_PREFIX + "carFire.png";
 
         carPic = new Picture(posX, posY, carRight);
         carPic.load(carRight);
@@ -110,6 +113,23 @@ public class Car {
             changeToTaxi();
         }
     }
+
+    public void onFire() {
+        if (taxi) {
+            carPic.load(onFire);
+            Game.setSpeed(Speed.SLOW.getSpeedValue());
+            taxi = false;
+        } else
+            return;
+        }
+
+    public void notOnFire() {
+        if (!taxi) {
+            changeToTaxi();
+        }
+        else
+            return;
+        }
 
     public boolean getGodMode() {
         return godMode;
