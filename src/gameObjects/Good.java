@@ -1,7 +1,7 @@
 package gameObjects;
 
 public interface Good {
-    public int plusPoint();
+    public void plusPoint();
 
     public void outFire();
 }

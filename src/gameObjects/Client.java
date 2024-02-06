@@ -2,6 +2,7 @@ package gameObjects;
 
 import game.Background;
 import game.Game;
+import game.Score;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Client extends Obstacle implements Good {
@@ -29,8 +30,8 @@ public class Client extends Obstacle implements Good {
         }
     }
 
-    public int plusPoint() {
-        return 2;
+    public void plusPoint() {
+        car.magic();
     }
 
     @Override

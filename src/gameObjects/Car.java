@@ -10,6 +10,7 @@ import javax.swing.*;
 public class Car {
 
     private Background background;
+    private Game game;
 
     private Picture carPic;
 
@@ -120,7 +121,7 @@ public class Car {
             Game.setSpeed(Speed.SLOW.getSpeedValue());
             taxi = false;
         } else
-            return;
+            game.gameOver();
         }
 
     public void notOnFire() {
@@ -130,6 +131,14 @@ public class Car {
         else
             return;
         }
+
+    public void magic(){
+        if(taxi) {
+            game.increaseScore();
+        }
+        else
+            return;
+    }
 
     public boolean getGodMode() {
         return godMode;
@@ -144,5 +153,9 @@ public class Car {
         godMode = false;
         Game.setSpeed(10);
         }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
+}
 

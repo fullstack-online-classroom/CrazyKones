@@ -22,6 +22,7 @@ public class CollisionDetector {
             }
             if (obstacle instanceof Good){
                 ((Good) obstacle).outFire();
+                ((Good) obstacle).plusPoint();
             }
         }
     }

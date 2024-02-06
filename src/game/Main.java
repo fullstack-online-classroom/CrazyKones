@@ -26,6 +26,7 @@ public class Main {
         keyboardLogic.setGame(game);
 
         game.setCar(car);
+        car.setGame(game);
         CollisionDetector collisionDetector = new CollisionDetector();
         game.setColissionDetector(collisionDetector);
         collisionDetector.setGame(game);

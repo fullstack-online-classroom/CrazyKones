@@ -131,6 +131,10 @@ public class Game {
         setScore(score); // set the score in the game
     }
 
+    public void increaseScore(){
+        score.upScore(10);
+    }
+
     public void DrawControls(Background background){
         float centerPosX = background.getBackground().getWidth() /5;
         float centerPosY = background.getBackground().getHeight()/5;
