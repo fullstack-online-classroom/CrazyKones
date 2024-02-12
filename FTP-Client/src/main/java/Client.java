@@ -22,16 +22,24 @@ public class Client {
         String line = "";
         String serverEcho = "";
         try {
-            while (!line.equals("QUIT")){
+            while  (!line.equals("QUIT")){
+//                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+//                System.out.println(in.readLine());
                 line = inputBufferReader.readLine();
                 outputBufferWriter.write(line);
                 outputBufferWriter.newLine();
                 outputBufferWriter.flush();
                 //reading message from server
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                serverEcho = in.readLine();
-                if (serverEcho != null) {
-                    System.out.println(serverEcho);
+//                 serverEcho = in.readLine();
+                while ((serverEcho = in.readLine()) != null){
+
+                  if (serverEcho == null) {
+                      break;
+                  }
+                        System.out.println(serverEcho);
+//                 }
                 }
             }
         }
