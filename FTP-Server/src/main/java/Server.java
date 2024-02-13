@@ -1,8 +1,7 @@
-import javax.management.StringValueExp;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
+
 
 public class Server {
 
@@ -24,7 +23,8 @@ public class Server {
             clientSocket = serverSocket.accept();
             System.out.println("Client connected " + clientSocket);
             setUpSocketStreams();
-//            out.println("Server : You're Connected");
+            //out.println("Server : You're Connected");
+            //exit();
             label:
             while (true){
                 String clientMessage = inputBufferReader.readLine().toUpperCase();
@@ -37,14 +37,18 @@ public class Server {
                         out.println("connection terminated");
                         break label;
                     case "HELP":
-                        //out.println("Commands: QUIT, LS, PUT, GET, MKDIR");
                         help();
                         break;
                     case "LS":
                         out.println(lsCommand());
                         break;
                     case "GET":
-                        out.println("Command not available!");
+                        String fileName;
+                        out.println("What file do you want?");
+                        exit();
+                        fileName = inputBufferReader.readLine();
+                        getCommand(fileName);
+                        out.println("Copy complete!");
                         break;
                     case "PUT":
                         out.println("Command not available!");
@@ -53,11 +57,11 @@ public class Server {
                         String folder;
                         while(true){
                             out.println("Give a name to folder:");
-                            out.println("exit");
+                            exit();
                             folder = inputBufferReader.readLine();
                             while(folder == ""){
                                 out.println("That not a good name!!Give a better name: ");
-                                out.println("exit");
+                                exit();
                                 folder = inputBufferReader.readLine();
 
                             }
@@ -69,13 +73,11 @@ public class Server {
                         out.println("We created a folder!");
                         break;
                     default:
-                        out.println("Command not available");
+                        out.println("Thats not a command");
                         break;
                 }
                 System.out.println(clientMessage);
-                out.println("exit");
-                //out.println(clientMessage + " server receive this message");
-                //out.flush();
+                exit();
 
             }
             out.close();
@@ -88,20 +90,24 @@ public class Server {
 
     public void help (){
 
-        out.println("bye or disconnect or quit" +  " - terminate connection ");
-        out.println("ls" + " - list files available on the server ");
-        out.println("put" + " - upload a file from the server ");
-        out.println("get" + " - get a file from the server ");
-        out.println("mkdir" + " - create a directory on the server \n");
+        out.println("bye or disconnect or quit - terminate connection ");
+        out.println("ls - list files available on the server ");
+        out.println("put - upload a file from the server ");
+        out.println("get - get a file from the server ");
+        out.println("mkdir - create a directory on the server \n");
 
     }
     
-    public String lsCommand(){
-        //what the directory
+    private String lsCommand(){
+        //what's the root
         File file = new File("serverRoot/");
         //get all files
         String [] allFiles = file.list();
-
+        //if thenes no file in the directory
+        if(allFiles.length == 0){
+            return "Theres no Files";
+        }
+        //getting the files and folders available into an array
         String files = "";
         for(int i = 0; i < allFiles.length; i++){
 
@@ -111,13 +117,36 @@ public class Server {
             }
             files += allFiles[i] + ", ";
         }
-        
         return files;
     }
 
-    public void makeDir(String folder){
+    private void makeDir(String folder){
         File file = new File("serverRoot/" + folder);
         file.mkdir();
+    }
+
+    private void getCommand(String fileName){
+        try {
+            out.println("files");
+            //File getFile = new File("serverRoot/" + fileName);
+            FileInputStream file = new FileInputStream("serverRoot/"+ fileName);
+            byte buffer[] = new byte[1024];
+            int bytesRead = file.read(buffer);
+            //sending the file
+            while(bytesRead != -1){
+                //String read = String.valueOf(bytesRead);
+                //out.println("copiar");
+                out.println(bytesRead);
+                bytesRead = file.read(buffer);
+            }
+
+            file.close();
+
+        }catch (FileNotFoundException e){
+            System.out.println("Error - File not found");
+        }catch (Exception e){
+            System.out.println("Error - There was a problem");
+        }
     }
 
 
@@ -125,6 +154,10 @@ public class Server {
         inputBufferReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         //outputBufferWriter = new OutputStreamWriter(clientSocket.getOutputStream());
         out = new PrintWriter(clientSocket.getOutputStream(), true);
+    }
+
+    private void exit(){
+        out.println("exit");
     }
 
     public static void main(String[] args){

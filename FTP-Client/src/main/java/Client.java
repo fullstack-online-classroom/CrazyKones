@@ -6,7 +6,6 @@ public class Client {
     private Socket clientSocket;
     private BufferedReader inputBufferReader;
     private BufferedWriter outputBufferWriter;
-    private PrintWriter out;
     BufferedReader in;
     public Client(){
         try {
@@ -21,7 +20,6 @@ public class Client {
         try {
             while  (!line.equals("QUIT")){
 
-                //System.out.println(in.readLine());
                 line = inputBufferReader.readLine();
                 outputBufferWriter.write(line);
                 outputBufferWriter.newLine();
@@ -30,28 +28,44 @@ public class Client {
                 //reading message from server
                 String serverEcho;
 
-                //exit
+                //when server sends exit it means that we are not waiting for a message that the servers sends
                 while ((serverEcho = in.readLine()) != null && !serverEcho.equals("exit")){
-                    if(serverEcho.equals("exit")){
-                        break;
+                    String type;
+                    type = serverEcho;
+
+                    while(type.equals("files")){
+
+                        try {
+                            serverEcho = in.readLine();
+                            System.out.println(serverEcho);
+                            FileOutputStream download = new FileOutputStream("clientRoot/" + line);
+                            download.write(serverEcho.getBytes());
+                            if (serverEcho.equals("exit")) {
+                                break;
+                            }
+                        }catch (FileNotFoundException e){
+                            System.out.println("error teste");
+                        }
+
                     }
-                    System.out.println(serverEcho);
+
+                            System.out.println(serverEcho);
 
                 }
-
 
             }
             outputBufferWriter.close();
         }
         catch (IOException e){
             throw new RuntimeException("");
+        }catch (Exception e){
+            System.out.println("we got an error");
         }
     }
 
     private void setUpSocketStreams() throws IOException {
         inputBufferReader = new BufferedReader(new InputStreamReader(System.in));
         outputBufferWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
     }
