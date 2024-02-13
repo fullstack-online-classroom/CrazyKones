@@ -33,16 +33,17 @@ public class Client {
                     String type;
                     type = serverEcho;
 
-                    while(type.equals("files")){
+                    if(type.equals("files")){
 
                         try {
-                            serverEcho = in.readLine();
-                            System.out.println(serverEcho);
-                            FileOutputStream download = new FileOutputStream("clientRoot/" + line);
-                            download.write(serverEcho.getBytes());
                             if (serverEcho.equals("exit")) {
                                 break;
                             }
+                            FileOutputStream download = new FileOutputStream("clientRoot/" + line);
+                            serverEcho = in.readLine();
+                            System.out.println(serverEcho);
+                            download.write(serverEcho.getBytes());
+
                         }catch (FileNotFoundException e){
                             System.out.println("error teste");
                         }

@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 
 public class Server {
@@ -136,10 +137,11 @@ public class Server {
             while(bytesRead != -1){
                 //String read = String.valueOf(bytesRead);
                 //out.println("copiar");
-                out.println(bytesRead);
+                String s = new String(buffer, StandardCharsets.UTF_8);
+                out.println(s);
+                //System.out.println(bytesRead);
                 bytesRead = file.read(buffer);
             }
-
             file.close();
 
         }catch (FileNotFoundException e){
