@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 
 public class Server {
@@ -129,20 +130,23 @@ public class Server {
     private void getCommand(String fileName){
         try {
             out.println("files");
-            //File getFile = new File("serverRoot/" + fileName);
+
             FileInputStream file = new FileInputStream("serverRoot/"+ fileName);
+            //get the bytes that need to read
             byte buffer[] = new byte[1024];
             int bytesRead = file.read(buffer);
+
             //sending the file
             while(bytesRead != -1){
-                //String read = String.valueOf(bytesRead);
-                //out.println("copiar");
-                String s = new String(buffer, StandardCharsets.UTF_8);
-                out.println(s);
-                //System.out.println(bytesRead);
+
+                String newFile = new String(buffer,0,bytesRead, StandardCharsets.UTF_8);
+
+                //System.out.println(newFile);
+                out.println(newFile);
                 bytesRead = file.read(buffer);
             }
             file.close();
+            exit();
 
         }catch (FileNotFoundException e){
             System.out.println("Error - File not found");

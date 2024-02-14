@@ -35,21 +35,27 @@ public class Client {
 
                     if(type.equals("files")){
 
-                        try {
-                            if (serverEcho.equals("exit")) {
-                                break;
-                            }
-                            FileOutputStream download = new FileOutputStream("clientRoot/" + line);
-                            serverEcho = in.readLine();
-                            System.out.println(serverEcho);
-                            download.write(serverEcho.getBytes());
+                        FileOutputStream download = new FileOutputStream("clientRoot/" + line);
 
-                        }catch (FileNotFoundException e){
-                            System.out.println("error teste");
+                        while(true) {
+                            try {
+                                if (serverEcho.equals("exit")) {
+                                    break;
+                                }
+
+                                serverEcho = in.readLine();
+                                System.out.println(serverEcho);
+                                download.write(serverEcho.getBytes());
+
+
+                            } catch (FileNotFoundException e) {
+                                System.out.println("error - Can't copy");
+                            }
                         }
+                        serverEcho = "exit";
 
                     }
-
+                    if(!serverEcho.equals("exit") && !serverEcho.equals("files"))
                             System.out.println(serverEcho);
 
                 }
