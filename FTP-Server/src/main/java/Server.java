@@ -173,7 +173,7 @@ public class Server {
             //Close streams tht we dont need anymore
             file.close();
             bufferedInputStream.close();
-            //out.println("Copy complete!");
+            out.println("Terminal: Copy complete!");
             //exit();
 
 
