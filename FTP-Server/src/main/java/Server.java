@@ -98,7 +98,7 @@ public class Server {
         }
     }
 
-    public void help (){
+    private void help (){
 
         out.println("bye or disconnect or quit - terminate connection ");
         out.println("ls - list files available on the server ");
@@ -156,9 +156,7 @@ public class Server {
             //Close streams tht we dont need anymore
             file.close();
             bufferedInputStream.close();
-            //
             //out.println("Copy complete!");
-            //exit();
             //exit();
 
 
@@ -167,6 +165,9 @@ public class Server {
         }catch (Exception e){
             System.out.println("Error - There was a problem");
         }
+    }
+    private void putCommand(String fileName){
+
     }
 
 

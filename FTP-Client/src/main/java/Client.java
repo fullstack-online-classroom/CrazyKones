@@ -66,7 +66,7 @@ public class Client {
     private void getCommand(String line){
         try {
 
-            //testing
+            //Max byte size
             byte fileSize[] = new byte[900000000];
             //receive input
             InputStream is = clientSocket.getInputStream();
@@ -77,12 +77,13 @@ public class Client {
             //convert file to bytes
             BufferedOutputStream downloadFile = new BufferedOutputStream(download);
 
-            //gets the bytes, current to know the size of the file
+            //gets the bytes, current is used to know the size of the file
             int bytesRead;
             int current = 0;
-            //System.out.println(bytesRead);
-        //If theres no more bytes to read we get out
+
+            //If theres no more bytes to read we get out
             while (is.available() != 0){
+                //Getting bytes read, start where current is. We start at 0
                 bytesRead = is.read(fileSize, current, (fileSize.length-current));
                 //System.out.println(bytesRead);
 
@@ -92,10 +93,10 @@ public class Client {
                 }
                 //System.out.println("available " + is.available());
             }
-
+            //Push bytes to the filee
             downloadFile.write(fileSize, 0, current);
-            downloadFile.close();
             downloadFile.flush();
+            downloadFile.close();
             //System.out.println("terminal: I am out");
 
         } catch (IOException e) {
