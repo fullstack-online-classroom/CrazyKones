@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -26,6 +27,8 @@ public class Server {
             clientSocket = serverSocket.accept();
             System.out.println("Client connected " + clientSocket);
             setUpSocketStreams();
+
+            String fileName;
             //out.println("Server : You're Connected");
             //exit();
             label:
@@ -49,16 +52,22 @@ public class Server {
                         exit();
                         break;
                     case "GET":
-                        String fileName;
                         out.println("What file do you want?");
                         exit();
                         fileName = inputBufferReader.readLine();
-                        System.out.println(fileName);
-                        out.println("files");
+                        System.out.println("Client: " + fileName);
+                        //out.println("get");
                         getCommand(fileName);
+                        fileName = "";
                         break;
                     case "PUT":
-                        out.println("Command not available!");
+                        out.println("What file do you want?");
+                        exit();
+                        fileName = inputBufferReader.readLine();
+                        out.println("put");
+                        System.out.println("Client: " + fileName);
+                        //out.println("put");
+                        putCommand(fileName);
                         exit();
                         break;
                     case "MKDIR":
@@ -86,6 +95,7 @@ public class Server {
                         exit();
                         break;
                 }
+
                 //System.out.println("Client message: " + clientMessage);
                 //exit();
 
@@ -139,11 +149,18 @@ public class Server {
         try {
 
             //gets the file
-            File teste = new File("serverRoot/" + fileName);
-            FileInputStream file = new FileInputStream("serverRoot/" + fileName);
+            File getFile = new File("serverRoot/" + fileName);
+            while(!getFile.exists()){
+                out.println("That does not exist, try a new one: ");
+                exit();
+                fileName = inputBufferReader.readLine();
+                getFile = new File("serverRoot/" + fileName);
+            }
+            out.println("get");
+            FileInputStream file = new FileInputStream(getFile);
 
             //get the bytes that we need to give to client
-            byte buffer[] = new byte[(int) teste.length()];
+            byte buffer[] = new byte[(int) getFile.length()];
             //converts into bytes
             BufferedInputStream bufferedInputStream = new BufferedInputStream(file);
             bufferedInputStream.read(buffer, 0, buffer.length);
@@ -166,7 +183,40 @@ public class Server {
             System.out.println("Error - There was a problem");
         }
     }
-    private void putCommand(String fileName){
+    private void putCommand(String fileName) {
+        try {
+            //buffer
+            byte fileSize[] = new byte[clientSocket.getReceiveBufferSize()];
+            //receive input
+            InputStream is = clientSocket.getInputStream();
+
+            //Where to write the file
+            FileOutputStream upload = new FileOutputStream("serverRoot/" + fileName);
+            //Convert to bytes
+            BufferedOutputStream uploadFile = new BufferedOutputStream(upload);
+
+            //gets the bytesread to know the size
+            int bytesRead ;
+
+            bytesRead = is.read(fileSize);
+            while (bytesRead != -1){
+                //Writing the file
+                uploadFile.write(fileSize, 0, bytesRead);
+                if(is.available() == 0){
+                    break;
+                }
+                bytesRead = is.read(fileSize);
+            }
+            upload.close();
+            uploadFile.close();
+            System.out.println("Terminal: Put complete");
+            out.println("Server: Put complete");
+
+        }catch (FileNotFoundException e){
+            System.out.println("File not found error");
+        } catch (IOException e) {
+            throw new RuntimeException("IO exception error");
+        }
 
     }
 
